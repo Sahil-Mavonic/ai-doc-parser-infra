@@ -1,0 +1,36 @@
+# Terraform-related files
+*.tfstate
+*.tfstate.backup
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+.terraformrc
+terraform.rc
+
+# Terraform working directories and plugins
+.terraform/
+.terraform.lock.hcl
+
+# Terragrunt-related files
+*.hcl.lock
+.terragrunt-cache/
+terraform.tfvars.json
+
+# Logs and debugging
+crash.log
+*.log
+
+# Ignore local and environment-specific overrides
+local.tf
+local_override.tf
+.env
+.env.*
+
+# Temporary files created by editors or OS
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+*.bak
+*~
