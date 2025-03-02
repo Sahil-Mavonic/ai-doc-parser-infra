@@ -1,9 +1,9 @@
 remote_state {
   backend = "gcs"
   config = {
-    bucket         = "mybucket996"  # 🚨 REPLACE WITH YOUR BUCKET NAME
+    bucket         = local.common_vars.bucket  # 🚨 REPLACE WITH YOUR BUCKET NAME
     prefix         = "${path_relative_to_include()}/terraform.tfstate"
-    project        = "sahil-devops"
+    project        = local.common_vars.project_id
 }
 }
 
@@ -19,8 +19,10 @@ EOF
 }
 
 locals {
-  project_id = "sahil-devops"  # 🚨 REPLACE WITH YOUR PROJECT ID
-  region     = "us-central1"
+  # Decode the YAML file to access the environment variable
+  common_vars = yamldecode(file("${get_parent_terragrunt_dir()}/common_vars.yaml"))
+  project_id = local.common_vars.project_id
+  region = local.common_vars.region
 }
 
 inputs = {
